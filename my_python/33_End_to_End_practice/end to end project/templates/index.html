@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Mark Predictor ML App</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 32px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #1e293b;
+            background: linear-gradient(135deg, #dbeafe, #eef2ff 55%, #f5e8ff);
+        }
+
+        .app-card {
+            width: 100%;
+            max-width: 680px;
+            overflow: hidden;
+            border-radius: 24px;
+            background: #ffffff;
+            box-shadow:
+                0 24px 60px rgba(39, 55, 110, 0.18),
+                0 4px 12px rgba(39, 55, 110, 0.08);
+        }
+
+        .banner {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4338ca, #2563eb);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(15, 23, 42, 0.7),
+                transparent 75%
+            );
+        }
+
+        .banner-text {
+            position: absolute;
+            z-index: 1;
+            left: 36px;
+            bottom: 25px;
+            margin: 0;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        .content {
+            padding: 38px;
+        }
+
+        .intro {
+            margin: 0 0 8px;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .description {
+            margin: 0 0 30px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            outline: none;
+            font: inherit;
+            background: #f8fafc;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
+            background: white;
+        }
+
+        .hint {
+            margin: 9px 0 24px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .button_css {
+            width: 100%;
+            padding: 16px;
+            border: 0;
+            border-radius: 12px;
+            color: white;
+            background: linear-gradient(135deg, #4f46e5, #2563eb);
+            box-shadow: 0 10px 22px rgba(79, 70, 229, 0.25);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button_css:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(79, 70, 229, 0.35);
+        }
+
+        .button_css:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: 26px;
+            padding: 20px;
+            border: 1px solid #c7d2fe;
+            border-radius: 12px;
+            color: #312e81;
+            background: #eef2ff;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.08);
+        }
+
+        .result h2 {
+            margin: 0;
+            font-size: 19px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .banner {
+                height: 170px;
+            }
+
+            .banner-text {
+                left: 24px;
+                font-size: 22px;
+            }
+
+            .content {
+                padding: 26px 22px;
+            }
+
+            .intro {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="app-card">
+        <div class="banner">
+            <img
+                src="D:\project\end to end project\static\images\college_banner2.png"
+                data-fallback="{{ url_for('static', filename='images/college_banner2.png') }}"
+                onerror="this.onerror=null; this.src=this.dataset.fallback;"
+                alt="College banner"
+            >
+            <h1 class="banner-text">Student Mark Predictor</h1>
+        </div>
+
+        <div class="content">
+            <h2 class="intro">Predict your marks</h2>
+            <p class="description">
+                Enter how many hours you study each day to see your predicted marks.
+            </p>
+
+            <form action="{{ url_for('predict') }}" method="post">
+                <label for="study_hours">Study hours per day</label>
+
+                <input
+                    id="study_hours"
+                    type="number"
+                    name="study_hours"
+                    placeholder="For example, 5"
+                    min="0.01"
+                    max="24"
+                    step="any"
+                    required
+                >
+
+                <p class="hint">Enter a value greater than 0 and up to 24 hours.</p>
+
+                <button class="button_css" type="submit">
+                    Predict Marks
+                </button>
+            </form>
+
+            {% if prediction_text %}
+            <div class="result" role="status" aria-live="polite">
+                <h2>{{ prediction_text }}</h2>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
