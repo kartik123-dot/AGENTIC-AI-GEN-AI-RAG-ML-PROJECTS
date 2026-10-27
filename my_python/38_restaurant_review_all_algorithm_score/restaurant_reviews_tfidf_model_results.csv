@@ -1,0 +1,17 @@
+Stopword setting,Algorithm,Bias score (train accuracy),Variance score (test accuracy),Accuracy,ROC-AUC
+Without stopwords,Logistic Regression,0.955,0.82,0.82,0.8947
+Without stopwords,KNN,0.85625,0.785,0.785,0.87055
+Without stopwords,Random Forest,1.0,0.76,0.76,0.8495999999999999
+Without stopwords,Decision Tree,0.92125,0.735,0.735,0.7597
+Without stopwords,SVM (RBF),1.0,0.815,0.815,0.9033
+Without stopwords,Naive Bayes,0.965,0.83,0.83,0.8858
+Without stopwords,XGBoost,0.9025,0.73,0.73,0.8347
+Without stopwords,LightGBM,0.92,0.645,0.645,0.7310500000000001
+With English stopwords removed,Logistic Regression,0.9525,0.805,0.805,0.8855500000000001
+With English stopwords removed,KNN,0.55875,0.56,0.56,0.7878999999999999
+With English stopwords removed,Random Forest,0.9975,0.805,0.805,0.8653
+With English stopwords removed,Decision Tree,0.86375,0.72,0.72,0.7576499999999999
+With English stopwords removed,SVM (RBF),0.99625,0.81,0.81,0.8745499999999999
+With English stopwords removed,Naive Bayes,0.96125,0.8,0.8,0.8817499999999999
+With English stopwords removed,XGBoost,0.82,0.76,0.76,0.84035
+With English stopwords removed,LightGBM,0.71875,0.67,0.67,0.7095
