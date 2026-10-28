@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reviews>
+    <review id="1">
+        <text>   THIS product is AMAZING!!! I bought it for 500 rupees.   </text>
+    </review>
+    <review id="2">
+        <text>I am NOT happy with this product... Very bad quality!!!</text>
+    </review>
+    <review id="3">
+        <text><![CDATA[<p>This phone is <b>really good</b> & useful!!!</p>]]></text>
+    </review>
+    <review id="4">
+        <text>Delivery was tooooo LATE!!! Order #12345 arrived after 10 days.</text>
+    </review>
+    <review id="5">
+        <text>   The packaging   was   good, but the item was damaged :(   </text>
+    </review>
+    <review id="6">
+        <text>Excellent service!!! Contact us at support@example.com or call 9876543210.</text>
+    </review>
+    <review id="7">
+        <text>I love this product 😊😊 but the price is too high!!!</text>
+    </review>
+    <review id="8">
+        <text>Worst experience ever!!! Don't buy this product... #disappointed</text>
+    </review>
+    <review id="9">
+        <text>Good quality, good price, good service. GOOD GOOD GOOD!</text>
+    </review>
+    <review id="10">
+        <text>   The product works fine   100%   recommended!!!   </text>
+    </review>
+</reviews>
